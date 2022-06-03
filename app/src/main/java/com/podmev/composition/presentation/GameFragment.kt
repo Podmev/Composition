@@ -74,6 +74,7 @@ class GameFragment : Fragment() {
 
     companion object{
         private const val KEY_LEVEL = "level"
+        const val NAME = "GameFragment"
 
         fun newInstance(level: Level): GameFragment{
             return GameFragment().apply{
