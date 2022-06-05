@@ -65,9 +65,9 @@ class GameFragment : Fragment() {
         viewModel.startGame(level)
     }
 
-    private fun setClickListenersToOptions(){
-        for(tvOption in tvOptions){
-            tvOption.setOnClickListener{
+    private fun setClickListenersToOptions() {
+        for (tvOption in tvOptions) {
+            tvOption.setOnClickListener {
                 viewModel.chooseAnswer(tvOption.text.toString().toInt())
             }
         }
@@ -91,16 +91,16 @@ class GameFragment : Fragment() {
             val color = getColorByState(it)
             binding.progressBar.progressTintList = ColorStateList.valueOf(color)
         }
-        viewModel.formattedTime.observe(viewLifecycleOwner){
+        viewModel.formattedTime.observe(viewLifecycleOwner) {
             binding.tvTimer.text = it
         }
-        viewModel.minPercent.observe(viewLifecycleOwner){
+        viewModel.minPercent.observe(viewLifecycleOwner) {
             binding.progressBar.secondaryProgress = it
         }
-        viewModel.gameResult.observe(viewLifecycleOwner){
+        viewModel.gameResult.observe(viewLifecycleOwner) {
             launchGameFinishedFragment(it)
         }
-        viewModel.progressAnswers.observe(viewLifecycleOwner){
+        viewModel.progressAnswers.observe(viewLifecycleOwner) {
             binding.tvAnswersProgress.text = it
         }
     }
@@ -131,8 +131,8 @@ class GameFragment : Fragment() {
         private const val KEY_LEVEL = "level"
         const val NAME = "GameFragment"
 
-        fun newInstance(level: Level): GameFragment{
-            return GameFragment().apply{
+        fun newInstance(level: Level): GameFragment {
+            return GameFragment().apply {
                 arguments = Bundle().apply {
                     putParcelable(KEY_LEVEL, level)
                 }

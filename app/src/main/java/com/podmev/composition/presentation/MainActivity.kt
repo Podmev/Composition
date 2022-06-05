@@ -1,7 +1,7 @@
 package com.podmev.composition.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.podmev.composition.R
 
 class MainActivity : AppCompatActivity() {

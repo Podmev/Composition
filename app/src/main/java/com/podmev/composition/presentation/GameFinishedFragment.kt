@@ -49,8 +49,8 @@ class GameFinishedFragment : Fragment() {
         }
     }
 
-    private fun bindViews(){
-        with(binding){
+    private fun bindViews() {
+        with(binding) {
             emojiResult.setImageResource(getSmileResId())
             tvRequiredAnswers.text = String.format(
                 getString(R.string.required_score),
@@ -72,18 +72,18 @@ class GameFinishedFragment : Fragment() {
     }
 
     private fun getSmileResId(): Int {
-        return if(gameResult.winner){
+        return if (gameResult.winner) {
             R.drawable.ic_smile
         } else {
             R.drawable.ic_sad
         }
     }
 
-    private fun getPercentageOfRightAnswers() = with(gameResult){
+    private fun getPercentageOfRightAnswers() = with(gameResult) {
         if (countOfQuestions == 0) {
             0
-        } else{
-            ((countOfRightAnswers / countOfQuestions.toDouble())*100).toInt()
+        } else {
+            ((countOfRightAnswers / countOfQuestions.toDouble()) * 100).toInt()
         }
     }
 
@@ -92,20 +92,20 @@ class GameFinishedFragment : Fragment() {
         _binding = null
     }
 
-    private fun parseArgs(){
+    private fun parseArgs() {
         requireArguments().getParcelable<GameResult>(KEY_GAME_RESULT)?.let {
             gameResult = it
         }
     }
 
-    private fun retryGame(){
+    private fun retryGame() {
         requireActivity().supportFragmentManager
             .popBackStack(GameFragment.NAME, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 
-    companion object{
+    companion object {
         private const val KEY_GAME_RESULT = "game_result"
-        fun newInstance(gameResult: GameResult): GameFinishedFragment{
+        fun newInstance(gameResult: GameResult): GameFinishedFragment {
             return GameFinishedFragment().apply {
                 arguments = Bundle().apply {
                     putParcelable(KEY_GAME_RESULT, gameResult)
